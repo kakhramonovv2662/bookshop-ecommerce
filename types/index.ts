@@ -5,6 +5,7 @@ export interface ProductTypes {
   cost: number;
   file: string;
   quantity: number;
+  status: "active" | "inactive";
 }
 
 export interface FetchBooksResponseTypes {

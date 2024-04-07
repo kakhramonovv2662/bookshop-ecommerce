@@ -3,6 +3,7 @@ const shimmer =
 
 export function BooksCardSkeleton() {
   return (
+    <div className="container">
       <div
         className={`${shimmer} relative overflow-hidden rounded shadow-lg mx-auto border flex flex-col gap-3 bg-gray-100`}
       >
@@ -13,5 +14,6 @@ export function BooksCardSkeleton() {
           <div className="font-medium h-10 w-20 text-base bg-gray-200 rounded-s-3xl absolute bottom-2 right-0 pl-6 pr-4 py-1"></div>
         </div>
       </div>
+    </div>
   );
 }
