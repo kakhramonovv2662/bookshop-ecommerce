@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { poppins } from "@/components/Fonts";
-import Header from "@/components/Header";
 import { CartProvider } from "./CartContext";
 
 import "./globals.css";
@@ -18,10 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className}`}>
-        <CartProvider>
-          <Header />
-          <main className="my-5">{children}</main>
-        </CartProvider>
+          <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );

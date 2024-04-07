@@ -1,7 +1,7 @@
-import BackToProductButton from "@/components/BackToProductButton";
-import ProductInfo from "@/components/ProductInfo";
+import BackToProductButton from "@/components/Product[id]/BackToProductButton";
+import ProductInfo from "@/components/Product[id]/ProductInfo";
 import { fetchBooksById } from "@/lib/data";
-import ProductImage from "./ProductImage";
+import ProductImage from "../Product/ProductImage";
 
 async function ProductDetails({ bookId }: { bookId: string }) {
   const getDetailById = await fetchBooksById(bookId);

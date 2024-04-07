@@ -1,10 +1,20 @@
-import ProductDetails from "@/components/ProductDetails";
+import Header from "@/components/Header";
+import ProductDetails from "@/components/Product[id]/ProductDetails";
+import Loading from "./loading";
+import { Suspense } from "react";
 
 function Product({ params }: { params: { id: string } }) {
   return (
-    <div className="container">
-      <ProductDetails bookId={params?.id} />
-    </div>
+    <>
+      <Suspense fallback={<Loading />}>
+        <Header />
+        <main>
+          <div className="container my-5">
+            <ProductDetails bookId={params?.id} />
+          </div>
+        </main>
+      </Suspense>
+    </>
   );
 }
 

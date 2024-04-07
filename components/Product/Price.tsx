@@ -9,8 +9,10 @@ function Price({
 }) {
   return (
     <>
+      <span className={numSize}>
+        {num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+      </span>
       {currency}
-      <span className={numSize}>{num}</span>
     </>
   );
 }

@@ -15,14 +15,14 @@ export async function fetchBooks(
     const offset = (page - 1) * limit;
 
     const query = sql`
-      SELECT * FROM books
+      SELECT * FROM products
       WHERE title ILIKE ${`%${searchTerm}%`}
       ORDER BY title
       LIMIT ${limit} OFFSET ${offset}
     `;
 
     const countQuery = sql`
-    SELECT COUNT(*) FROM books
+    SELECT COUNT(*) FROM products
     WHERE title ILIKE ${`%${searchTerm}%`}
   `;
 
@@ -44,19 +44,20 @@ export async function fetchBooksById(id: string) {
   noStore();
   try {
     const data = await sql<ProductTypes>`
-      SELECT  
-        books.id,
-        books.title,
-        books.description,
-        books.cost,
-        books.file
-      FROM books
-      WHERE books.id = ${id};
+      SELECT
+        products.id,
+        products.title,
+        products.description,
+        products.cost,
+        products.file,
+        products.status
+      FROM products
+      WHERE products.id = ${id};
     `;
 
     return data?.rows;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch books.");
+    throw new Error(`Database Error: ${error}`);
   }
 }

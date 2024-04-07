@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useCart } from "@/app/CartContext";
+import { Button } from "../Button";
+import { Delete } from "lucide-react";
 
 const ShoppingCartModal: React.FC = () => {
   const { cartItems, updateCartItemQuantity, removeFromCart } = useCart();
@@ -14,7 +16,7 @@ const ShoppingCartModal: React.FC = () => {
           {cartItems?.map(({ cost, file, id, title, quantity }) => (
             <div key={id} className="flex items-center gap-5">
               <div className="flex-shrink-0 w-24">
-                <Image src={file} alt={title} width={100} height={100} />
+                <Image src={`/${file}`} alt={title} width={100} height={100} />
               </div>
               <div className="flex-grow flex flex-col gap-1">
                 <h2 className="text-xl font-semibold">{title}</h2>
@@ -27,14 +29,16 @@ const ShoppingCartModal: React.FC = () => {
                       updateCartItemQuantity(id, parseInt(e.target.value))
                     }
                     min={1}
-                    className="w-16 h-8 border rounded-md px-2 text-sm"
+                    className="w-16 h-12 border rounded-md px-2 text-sm"
                   />
-                  <button
-                    onClick={() => removeFromCart(id)}
-                    className="ml-4 text-red-500 hover:text-red-600"
-                  >
-                    Remove
-                  </button>
+                  <div>
+                    <Button
+                      onClick={() => removeFromCart(id)}
+                      className="ml-4 text-sm p-2 bg-red-400"
+                    >
+                      <Delete />
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -48,7 +52,7 @@ const ShoppingCartModal: React.FC = () => {
             )}
           </div>
           <button
-            className="p-3 bg-purple-600 text-white w-full text-lg flex items-center justify-center gap-5 
+            className="p-3 bg-blue-600 text-white w-full text-lg flex items-center justify-center gap-5 
                         rounded-xl transform duration-500 ease-in-out hover:scale-105 active:scale-100"
           >
             Checkout
